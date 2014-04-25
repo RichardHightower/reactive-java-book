@@ -28,7 +28,7 @@ public class Example extends Verticle {
     void doGet(HttpServerRequest request) {
 
         request.response().headers().add("Content-Type", "text/html; charset=UTF-8");
-	request.response().setStatusCode(200).end(
+	    request.response().setStatusCode(200).end(
 
               "\n<html><body>Hi Mom!</body></html>\n"
         );
