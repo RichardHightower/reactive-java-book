@@ -47,3 +47,15 @@ $ vertx run Example.java
 [The full example is on github](./Example.java) in all its glory with a full metric ton of imports.
 
 
+## Testing our first example
+
+Open up a new terminal and run:
+
+```
+$ curl localhost:8080
+
+<html><body>Hi Mom!</body></html>
+
+```
+
+
