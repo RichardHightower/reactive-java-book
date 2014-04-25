@@ -1,8 +1,14 @@
-reactive-java-book
+Reactive Java Programming
 ==================
 
-Book that covers Reactive Programming in Java
+This books covers new ways to write Java services.
+
+
+##About the Author
+###Rick Hightower
+Rick started writing books about Java in 2007 when he worked as a research engineer at Intel focusing on Java middleware. He contributed to five books.
 
 ##About this book
 
-This book uses https://github.com/GitbookIO/gitbook/
+This book uses [Gitbook](https://github.com/GitbookIO/gitbook/ "Gitbook").
+
