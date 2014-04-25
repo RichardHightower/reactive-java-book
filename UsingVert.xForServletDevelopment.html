@@ -3,7 +3,7 @@
     <head prefix="og: http://ogp.me/ns# book: http://ogp.me/ns/book#">
         
         <meta charset="UTF-8">
-        <title>Introduction | Reactive Java Programming</title>
+        <title>Using Vert.x for Servlet Development | Reactive Java Programming</title>
 
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="robots" content="index, follow">
@@ -13,11 +13,11 @@
         <meta name="generator" content="www.gitbook.io">
 
         
-        <link rel="next" href="./IntroReactiveProgramming.html" />
         
+        <link rel="prev" href="./DownloadingAndInstallingVertx.html" />
         
 
-        <meta property="og:title" content="Introduction | Reactive Java Programming">
+        <meta property="og:title" content="Using Vert.x for Servlet Development | Reactive Java Programming">
         <meta property="og:site_name" content="Reactive Java Programming">
         <meta property="og:type" content="book">
         <meta property="og:locale" content="en_US">
@@ -40,7 +40,7 @@
 
 
         
-    <div class="book" data-github="RichardHightower/reactive-java-book" data-level="0" data-basepath="." data-revision="1398417508246">
+    <div class="book" data-github="RichardHightower/reactive-java-book" data-level="3" data-basepath="." data-revision="1398417508246">
     <div class="book-header">
     <!-- Actions Left -->
     
@@ -103,7 +103,7 @@
             <a href="https://github.com/RichardHightower/reactive-java-book/issues" target="blank">Questions and Issues</a>
         </li>
         <li>
-            <a href="https://github.com/RichardHightower/reactive-java-book/edit/master/README.md" target="blank">Edit and Contribute</a>
+            <a href="https://github.com/RichardHightower/reactive-java-book/edit/master/UsingVert.xForServletDevelopment.md" target="blank">Edit and Contribute</a>
         </li>
         <li class="divider"></li>
         
@@ -146,33 +146,66 @@
             <div class="page-wrapper" tabindex="-1">
                 <div class="book-progress">
     <div class="bar">
-        <div class="inner" style="width: 0%;min-width: 0%;"></div>
+        <div class="inner" style="width: 100%;min-width: 66.66666666666667%;"></div>
     </div>
     <div class="chapters">
     
         <a href="./index.html" title="Introduction" class="chapter done new-chapter" data-progress="0" style="left: 0%;"></a>
     
-        <a href="./IntroReactiveProgramming.html" title="Vert.x Reactive Programming for Java" class="chapter  new-chapter" data-progress="1" style="left: 33.333333333333336%;"></a>
+        <a href="./IntroReactiveProgramming.html" title="Vert.x Reactive Programming for Java" class="chapter done new-chapter" data-progress="1" style="left: 33.333333333333336%;"></a>
     
-        <a href="./DownloadingAndInstallingVertx.html" title="Downloading and installing Vert.x" class="chapter  new-chapter" data-progress="2" style="left: 66.66666666666667%;"></a>
+        <a href="./DownloadingAndInstallingVertx.html" title="Downloading and installing Vert.x" class="chapter done new-chapter" data-progress="2" style="left: 66.66666666666667%;"></a>
     
-        <a href="./UsingVert.xForServletDevelopment.html" title="Using Vert.x for Servlet Development" class="chapter  new-chapter" data-progress="3" style="left: 100%;"></a>
+        <a href="./UsingVert.xForServletDevelopment.html" title="Using Vert.x for Servlet Development" class="chapter done new-chapter" data-progress="3" style="left: 100%;"></a>
     
     </div>
 </div>
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_1">
+                    <section class="normal" id="section-gitbook_4">
                     
-                        <h1 id="reactive-java-programming">Reactive Java Programming</h1>
-<p>This books covers new ways to write Java services.</p>
-<h2 id="about-the-author">About the Author</h2>
-<h3 id="rick-hightower">Rick Hightower</h3>
-<p>Rick started writing books about Java in 2007 when he worked as a research engineer at Intel focusing on Java middleware. He contributed to five books.</p>
-<h2 id="about-this-book">About this book</h2>
-<p>This book uses <a href="https://github.com/GitbookIO/gitbook/" title="Gitbook" target="_blank">Gitbook</a>.</p>
+                        <h1 id="using-vert-x-for-servlet-development">Using Vert.x for Servlet Development</h1>
+<p><strong><em>Java Servlets</em></strong> are components that run in a servlet container, and are frequently featured in Java Application Servers and are a cornerstone of Java EE. Java Servlets handle request coming from a Web browser and typicaly talk to a database to create interactive web application. As web application become richer and richer, the traditional web applicaiton are going to the wayside.</p>
+<p>Java Servlets replaced Common Gateway Interface (CGI) dominance. Reactive programmign frameworks like Vert.x, Node.js, and their ilk are replacing Java Servlets and <strong>Java EE</strong>.</p>
+<p>Reactive frameworks are to Java EE what NoSQL is to RDBMS and SQL.</p>
+<h2 id="first-java-example">First Java Example</h2>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Example</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Verticle</span> {</span>
 
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">start</span>() {
+
+        HttpServer server = vertx.createHttpServer();
+
+        server.requestHandler(<span class="hljs-keyword">new</span> Handler&lt;HttpServerRequest&gt;() {
+        <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">handle</span>(<span class="hljs-keyword">final</span> HttpServerRequest request) {
+            doGet(request);
+        }
+        });
+        server.listen(<span class="hljs-number">8080</span>);
+
+    }
+
+    <span class="hljs-keyword">void</span> doGet(HttpServerRequest request) {
+
+        request.response().headers().add(<span class="hljs-string">"Content-Type"</span>, <span class="hljs-string">"text/html; charset=UTF-8"</span>);
+        request.response().setStatusCode(<span class="hljs-number">200</span>).end(
+
+              <span class="hljs-string">"\n&lt;html&gt;&lt;body&gt;Hi Mom!&lt;/body&gt;&lt;/html&gt;\n"</span>
+        );
+
+    }
+
+}
+</code></pre>
+<h2 id="running-the-first-example">Running the first example</h2>
+<pre><code>$ vertx run Example.java
+</code></pre><p><a href="./Example.java">The full example is on github</a> in all its glory with a full metric ton of imports.</p>
+<h2 id="testing-our-first-example">Testing our first example</h2>
+<p>Open up a new terminal and run:</p>
+<pre><code>$ curl localhost:8080
+
+&lt;html&gt;&lt;body&gt;Hi Mom!&lt;/body&gt;&lt;/html&gt;
+</code></pre>
                     
                     </section>
                 
@@ -181,8 +214,8 @@
         </div>
 
         
+        <a href="./DownloadingAndInstallingVertx.html" class="navigation navigation-prev"><i class="fa fa-angle-left"></i></a>
         
-        <a href="./IntroReactiveProgramming.html" class="navigation navigation-next"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>
