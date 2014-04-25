@@ -43,3 +43,7 @@ public class Example extends Verticle {
 ```
 $ vertx run Example.java
 ```
+
+[The full example is on github](./Example.java) in all its glory with a full metric ton of imports.
+
+
