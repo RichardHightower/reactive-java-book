@@ -1,4 +1,9 @@
 apply from: "gradle/vertx.gradle"
+apply plugin: 'scala'
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'application'
+
 
 /*
 
@@ -52,17 +57,47 @@ install - install any jars produced to the local Maven repository (.m2)
 
  */
 
+
+sourceSets {
+    gatling {
+        scala {
+            srcDir "src/test/gatling"
+        }
+    }
+    main {
+        scala {
+            srcDir "src/main/scala"
+        }
+    }
+
+}
+
+
+task load(type: JavaExec) {
+    classpath = sourceSets.main.runtimeClasspath
+    // Gatling application
+    main = "io.gatling.app.Gatling"
+    // Specify the simulation to run
+    args = Eval.me("['-s', 'com.example.ExampleVerticleLoadTest']")
+}
+
+
+
 dependencies {
-  /*
-  Add your module jar dependencies here
-  E.g.
-  compile "com.foo:foo-lib:1.0.1" - for compile time deps - this will end up in your module too!
-  testCompile "com.foo:foo-lib:1.0.1" - for test time deps
-  provided "com.foo:foo-lib:1.0.1" - if you DON'T want it to be packaged in the module zip
-  */
+
+
+    compile 'io.gatling:gatling-app:2.0.0-SNAPSHOT'
+    compile 'io.gatling:gatling-charts:2.0.0-SNAPSHOT'
+    compile 'io.gatling:gatling-app:2.0.0-SNAPSHOT'
+    compile 'io.gatling:gatling-metrics:2.0.0-SNAPSHOT'
+
+    compile 'org.scala-lang:scala-compiler:2.9'
+    compile 'org.scala-lang:scala-library:2.9'
+
 
 
 }
+
 
 test {
   include 'com/example/test/unit/**'
@@ -82,6 +117,15 @@ task integration(type: Test) {
 task allTest(type: Test) {
 
 }
+
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+    // Gatling libraries
+    maven { url 'http://repository.excilys.com/content/groups/public' }
+}
+
 
 /*
 If you're uploading stuff to Maven, Gradle needs to generate a POM.

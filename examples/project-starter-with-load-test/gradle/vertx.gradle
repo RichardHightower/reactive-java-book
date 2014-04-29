@@ -24,6 +24,7 @@ apply plugin: 'java'
 apply plugin: 'groovy'
 apply plugin: 'idea'
 apply plugin: 'eclipse'
+apply plugin: 'application'
 
 def cpSeparator = System.getProperty("path.separator")
 
@@ -78,8 +79,10 @@ buildscript {
       // are concurrent builds
       mavenLocal()
     }
+    maven { url 'http://repository.excilys.com/content/groups/public' }
     maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
     mavenCentral()
+
   }
 
   dependencies {
@@ -87,7 +90,8 @@ buildscript {
     classpath "io.vertx:vertx-platform:$vertxVersion"
     classpath "io.vertx:vertx-hazelcast:$vertxVersion"
 
-    // Extra classpath for Vert.x
+
+      // Extra classpath for Vert.x
 
     // Users can be Vert.x platform classpath files (e.g. langs.properties) in either src/main/platform_lib
     // or src/main/resources/platform_lib (if they want it in the module for fatjars)

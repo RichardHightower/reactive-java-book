@@ -28,16 +28,14 @@ Example.java~
 
 buildBook.sh~
 
-dist/reactiveJavaBook.epub
+examples/project-starter-with-load-test/.idea/
+examples/project-starter-with-load-test/.gradle/
+examples/project-starter-with-load-test/results/
 
-dist/reactiveJavaBook.pdf
+build
+*.iml
+*.ipr
+*.iws
+target
 
-dist/reactiveJavaBook/DownloadingAndInstallingVertx.html
 
-dist/reactiveJavaBook/index.html
-
-dist/reactiveJavaBook/IntroReactiveProgramming.html
-
-dist/reactiveJavaBook/search_index.json
-
-dist/reactiveJavaBook/UsingVert.xForServletDevelopment.html
