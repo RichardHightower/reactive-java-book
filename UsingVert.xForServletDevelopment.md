@@ -16,7 +16,8 @@ public class Example extends Verticle {
 
         HttpServer server = vertx.createHttpServer();
 
-        server.requestHandler(new Handler<HttpServerRequest>() {
+        server.requestHandler(
+        new Handler<HttpServerRequest>() {
 		public void handle(final HttpServerRequest request) {
 			doGet(request);
 		}
@@ -27,7 +28,9 @@ public class Example extends Verticle {
 
     void doGet(HttpServerRequest request) {
 
-        request.response().headers().add("Content-Type", "text/html; charset=UTF-8");
+        request.response().headers().add("Content-Type",
+        "text/html; charset=UTF-8");
+
 	    request.response().setStatusCode(200).end(
 
               "\n<html><body>Hi Mom!</body></html>\n"

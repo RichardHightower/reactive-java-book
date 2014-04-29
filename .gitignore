@@ -13,6 +13,8 @@ hs_err_pid*
 
 _book
 
+dist
+
 
 book.epub
 
@@ -25,3 +27,17 @@ SUMMARY.md~
 Example.java~
 
 buildBook.sh~
+
+dist/reactiveJavaBook.epub
+
+dist/reactiveJavaBook.pdf
+
+dist/reactiveJavaBook/DownloadingAndInstallingVertx.html
+
+dist/reactiveJavaBook/index.html
+
+dist/reactiveJavaBook/IntroReactiveProgramming.html
+
+dist/reactiveJavaBook/search_index.json
+
+dist/reactiveJavaBook/UsingVert.xForServletDevelopment.html

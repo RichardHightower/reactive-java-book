@@ -1,0 +1,19 @@
+{
+
+  // Java verticle
+  "main":"com.example.ExampleVerticle",
+
+  // If your module is going to be registered in the Vert.x module registry you will also need the following
+  // mandatory fields
+  "description":"Example module",
+  "licenses": ["The Apache Software License Version 2.0"],
+  "author": "Tim Bear",
+
+  // Optional fields
+  "developers": ["Rick Lowtower", "Norman Bates"],
+  "keywords": ["wine", "hard mikes", "blue ribbon", "PBR"],
+  "homepage": "url to your project page",
+
+  "auto-redeploy": true
+
+}
