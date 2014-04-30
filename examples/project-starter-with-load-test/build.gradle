@@ -93,8 +93,7 @@ dependencies {
     compile 'io.gatling:gatling-recorder:2.0.0-SNAPSHOT'
     compile 'io.gatling:gatling-redis:2.0.0-SNAPSHOT'
     compile 'io.gatling:gatling-jdbc:2.0.0-SNAPSHOT'
-
-
+    compile 'io.gatling.highcharts:gatling-charts-highcharts:2.0.0-SNAPSHOT'
 
     compile 'org.scala-lang:scala-compiler:2.10.4'
     compile 'org.scala-lang:scala-library:2.10.4'
