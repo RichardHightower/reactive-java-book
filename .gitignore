@@ -39,3 +39,5 @@ build
 target
 
 
+
+examples/project-starter-with-load-test/vertx_classpath.txt

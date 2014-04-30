@@ -59,15 +59,14 @@ install - install any jars produced to the local Maven repository (.m2)
 
 
 sourceSets {
-    gatling {
+    main {
         scala {
             srcDir "src/test/gatling"
         }
-    }
-    main {
-        scala {
-            srcDir "src/main/scala"
+        java {
+            srcDir "src/main/java"
         }
+
     }
 
 }
@@ -88,11 +87,17 @@ dependencies {
 
     compile 'io.gatling:gatling-app:2.0.0-SNAPSHOT'
     compile 'io.gatling:gatling-charts:2.0.0-SNAPSHOT'
-    compile 'io.gatling:gatling-app:2.0.0-SNAPSHOT'
     compile 'io.gatling:gatling-metrics:2.0.0-SNAPSHOT'
+    compile 'io.gatling:gatling-core:2.0.0-SNAPSHOT'
+    compile 'io.gatling:gatling-http:2.0.0-SNAPSHOT'
+    compile 'io.gatling:gatling-recorder:2.0.0-SNAPSHOT'
+    compile 'io.gatling:gatling-redis:2.0.0-SNAPSHOT'
+    compile 'io.gatling:gatling-jdbc:2.0.0-SNAPSHOT'
 
-    compile 'org.scala-lang:scala-compiler:2.9'
-    compile 'org.scala-lang:scala-library:2.9'
+
+
+    compile 'org.scala-lang:scala-compiler:2.10.4'
+    compile 'org.scala-lang:scala-library:2.10.4'
 
 
 
@@ -122,8 +127,6 @@ task allTest(type: Test) {
 repositories {
     mavenLocal()
     mavenCentral()
-    // Gatling libraries
-    maven { url 'http://repository.excilys.com/content/groups/public' }
 }
 
 
