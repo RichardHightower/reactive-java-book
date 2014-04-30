@@ -1,4 +1,4 @@
-# Vert.x Gradle Template
+# Vert.x Gradle Gatling Template
 
 Template for creating a Java Vert.x module with a Gradle build.
 
